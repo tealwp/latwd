@@ -6,11 +6,20 @@ import (
 	"strconv"
 )
 
+const (
+	badUsageReturn = `
+Usage: latwd <url> <max_depth> <max_breadth>
+
+URL: [required] [string] - the base url to begin at
+MAX_DEPTH: [not required] [integer] - the max depth to recursively call down to. Default is 5.
+MAX_BREADTH: [not required] [integer] - the max breadth to recursively call from a single page. Default is 5.`
+)
+
 func main() {
 	args := os.Args
 	if len(args) < 2 {
-		fmt.Println("Usage: latwd <url!> <maxDepth?> <maxBreadth?>")
-		os.Exit(1)
+		fmt.Printf("%s\n\n", badUsageReturn)
+		os.Exit(0)
 	}
 	maxDepth := 5
 	maxBreadth := 5

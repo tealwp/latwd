@@ -38,7 +38,7 @@ func (a *App) StartTrolling() {
 }
 
 func (l *Link) Troll(currentDepth, maxDepth, maxBreadth int) {
-	fmt.Printf("currentDepth: %d, url: %s\n", currentDepth, l.URL)
+	fmt.Printf("depth: %d, url: %s\n", currentDepth, l.URL)
 	if currentDepth >= maxDepth {
 		return
 	}
