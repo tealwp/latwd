@@ -35,10 +35,10 @@ func (a *App) StartTrolling(url string) {
 	// recursively call Troll on the url, then its children, and so on and so forth
 	link := Link{URL: url, Depth: 1, Client: a.client}
 	link.Troll(url, 1, a.maxDepth, a.maxBreadth)
-	a.links = append(a.links, link)
 }
 
 func (l *Link) Troll(url string, currentDepth, maxDepth, maxBreadth int) {
+	fmt.Printf("currentDepth: %d, url: %s\n", currentDepth, url)
 	if currentDepth >= maxDepth {
 		return
 	}
@@ -64,7 +64,7 @@ func (l *Link) Troll(url string, currentDepth, maxDepth, maxBreadth int) {
 	if len(filteredLinks) > maxBreadth {
 		filteredLinks = filteredLinks[:maxBreadth]
 	}
-	for _, link := range childURLs {
+	for _, link := range filteredLinks {
 		newL := &Link{URL: link, Depth: currentDepth + 1, Client: l.Client, Parent: l}
 		l.Children = append(l.Children, newL)
 		newL.Troll(link, currentDepth+1, maxDepth, maxBreadth)

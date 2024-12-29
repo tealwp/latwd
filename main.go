@@ -12,8 +12,8 @@ func main() {
 		fmt.Println("Usage: latwd <url!> <maxDepth?> <maxBreadth?>")
 		os.Exit(1)
 	}
-	maxDepth := 10
-	maxBreadth := 10
+	maxDepth := 5
+	maxBreadth := 5
 	if len(args) == 4 {
 		var err error
 		maxDepth, err = strconv.Atoi(args[2])
@@ -30,5 +30,4 @@ func main() {
 	app := NewApp(maxDepth, maxBreadth)
 	fmt.Println(app)
 	app.StartTrolling(args[1])
-	fmt.Printf("app links: %+v\n", app.links)
 }
