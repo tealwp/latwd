@@ -30,12 +30,24 @@ go install .
 
 ## Usage
 
-latwd is used via cli:
+**1. CLI:**
 
 ```bash
-latwd <url> <max_depth> <max_breadth>
+latwd <url> <max_depth> <max_breadth> <max_workers>
 ```
 
-URL: [required] [string] - the base url to begin at
-MAX_DEPTH: [not required] [integer] - the max depth to recursively call down to. Default is 5.
-MAX_BREADTH: [not required] [integer] - the max breadth to recursively call from a single page. Default is 5.
+**2. Using `go run`:**
+
+```bash
+cd <latwd_directory>
+go run . <url> <max_depth> <max_breadth> <max_workers>
+```
+
+**Params**
+
+```
+URL: [string!] - the base url to begin at
+MAX_DEPTH: [integer] - the max depth to recursively call down to. Default is 5.
+MAX_BREADTH: [integer] - the max breadth to recursively call from a single page. Default is 5.
+MAX_WORKERS: [integer] - the max number of go routines used to run concurrently. Default is 5.
+```
