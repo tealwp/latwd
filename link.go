@@ -21,14 +21,11 @@ type Link struct {
 
 func (l *Link) printTree() {
 	prefix := strings.Repeat("  ", l.Depth)
-	var color string
 	if l.DeadLink != nil {
-		color = red
+		fmt.Printf("%s- %s%s -- (%s)%s\n", prefix, red, l.URL, l.DeadLink.Error(), resetColor)
 	} else {
-		color = green
+		fmt.Printf("%s- %s%s%s\n", prefix, green, l.URL, resetColor)
 	}
-
-	fmt.Printf("%s- %s%s%s\n", prefix, color, l.URL, resetColor)
 
 	for _, child := range l.Children {
 		child.printTree()
